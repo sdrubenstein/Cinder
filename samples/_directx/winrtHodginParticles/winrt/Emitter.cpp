@@ -18,7 +18,7 @@ Emitter::Emitter() :
 	vel(Vec3f::zero())
 {
 	for( int i = 0; i < TOTAL_PARTICLES; i++ ) {
-		particles.push_back( Particle( loc, vel ) );
+		particles.emplace_back( loc, vel );
 	}
 
 }
@@ -40,7 +40,7 @@ void Emitter::renderParticles()
 
 	particleImg->bind();
 	dx::begin( GL_QUADS );
-	for ( Particle particle : particles ) 
+	for ( Particle &particle : particles ) 
 	{
 		if ( !particle.ISDEAD ) 
 		{
